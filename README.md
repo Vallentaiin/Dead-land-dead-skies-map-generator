@@ -41,3 +41,7 @@ Open `index.html` in a browser. No dependency installation required.
 - Exports the map as PNG and generation data as JSON.
 
 The hex map and atmospheric backdrop are generated procedurally.
+
+## License
+
+MIT. See `LICENSE`.
