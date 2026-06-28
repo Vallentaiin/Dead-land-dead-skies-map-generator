@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dead Land, Dead Skies - генератор гексовой карты</title>
+    <link rel="icon" type="image/png" sizes="256x256" href="assets/iconshort.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="panel controls-panel" aria-label="Настройки генератора" data-i18n-aria-label="controlsAria">
+        <header class="brand">
+          <img class="brand-mark" src="assets/iconwide.png" width="680" height="420" alt="" aria-hidden="true">
+          <div class="brand-copy">
+            <p class="eyebrow" data-i18n="brandEyebrow">1922 / живые мертвецы / 6 миль</p>
+            <h1>Dead Land, Dead Skies</h1>
+          </div>
+        </header>
+
+        <section class="control-section">
+          <h2 data-i18n="regionMap">Карта региона</h2>
+          <label class="field">
+            <span>Seed</span>
+            <input id="seedInput" type="text" spellcheck="false" autocomplete="off">
+          </label>
+          <div class="split-fields">
+            <label class="field">
+              <span data-i18n="width">Ширина</span>
+              <input id="widthInput" type="number" min="6" max="28" step="1">
+            </label>
+            <label class="field">
+              <span data-i18n="height">Высота</span>
+              <input id="heightInput" type="number" min="6" max="22" step="1">
+            </label>
+          </div>
+          <div class="button-row single-action-row">
+            <button id="generateBtn" class="primary-action" type="button" data-i18n="generate">Сгенерировать</button>
+          </div>
+        </section>
+
+        <section class="control-section">
+          <h2 data-i18n="view">Вид</h2>
+          <div class="segmented-control" role="group" aria-label="Режим отображения" data-i18n-aria-label="viewModeAria">
+            <button id="cleanModeBtn" type="button" data-map-mode="clean" data-i18n="clean">Чистая</button>
+            <button id="atmosphericModeBtn" type="button" data-map-mode="atmospheric" data-i18n="atmospheric">Атмосферная</button>
+          </div>
+        </section>
+
+        <section class="control-section">
+          <h2 data-i18n="editor">Редактор</h2>
+          <div id="editorTools" class="tool-grid" role="group" aria-label="Инструменты карты" data-i18n-aria-label="editorToolsAria">
+            <button type="button" data-editor-tool="select" data-i18n="toolSelect">Выбор</button>
+            <button type="button" data-editor-tool="road" data-i18n="toolRoad">Дорога</button>
+            <button type="button" data-editor-tool="rail" data-i18n="toolRail">Ж/д</button>
+            <button type="button" data-editor-tool="river" data-i18n="toolRiver">Река</button>
+          </div>
+          <p id="editorHint" class="tool-hint"></p>
+        </section>
+
+        <section class="control-section">
+          <h2 data-i18n="export">Экспорт</h2>
+          <div class="button-row export-row">
+            <button id="exportPngBtn" type="button">PNG</button>
+            <button id="exportJsonBtn" type="button">JSON</button>
+            <button id="copySeedBtn" type="button" data-i18n="seedButton">Seed</button>
+          </div>
+        </section>
+
+        <section class="control-section summary-section">
+          <h2 data-i18n="summary">Сводка</h2>
+          <dl id="statsList" class="stats-list"></dl>
+        </section>
+      </aside>
+
+      <main class="map-stage" aria-label="Сгенерированная карта" data-i18n-aria-label="mapAria">
+        <div class="stage-toolbar">
+          <div>
+            <p class="eyebrow" data-i18n="hexRegion">Гексовая область</p>
+            <h2 id="mapTitle">Карта не создана</h2>
+          </div>
+          <div class="stage-actions">
+            <button id="languageToggleBtn" class="language-toggle" type="button" aria-label="Switch language">EN</button>
+            <div id="statusPill" class="status-pill">готово</div>
+          </div>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="mapCanvas"></canvas>
+        </div>
+      </main>
+
+      <aside class="panel details-panel" aria-label="Подробности гекса" data-i18n-aria-label="detailsAria">
+        <section class="control-section">
+          <h2 data-i18n="hex">Гекс</h2>
+          <div id="hexDetails" class="hex-details"></div>
+        </section>
+
+        <section class="control-section">
+          <h2 data-i18n="hexEditor">Правка</h2>
+          <div id="hexEditor" class="hex-editor"></div>
+        </section>
+
+        <section class="control-section">
+          <h2 data-i18n="legend">Легенда</h2>
+          <div id="legendList" class="legend-list"></div>
+        </section>
+      </aside>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+# Local Codex/agent workspace notes
+.agents/
+.codex/
+
+# Local backups and packaged release artifacts
+backups/
+dead-land-dead-skies-map-generator-package.zip
+*.zip
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+
+# Dependency/build/test output, if tooling is added later
+node_modules/
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+.cache/
+
+# Logs and temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+
+# Editor and OS metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
